@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UrsusTermos - Adivinhe as Palavras</title>
+  <title>Termo Ursus - Adivinhe as Palavras</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -537,7 +537,7 @@
 <header>
   <div class="header-logo">
     <img src="https://res.cloudinary.com/dzoeidwur/image/upload/v1782147266/Logo_oficial-removebg-preview_1_l3jgen.png" alt="Ursusman" />
-    <span class="header-title">UrsusTermos</span>
+    <span class="header-title">Termo do Ursus</span>
   </div>
   <div class="header-actions">
     <button class="icon-btn" id="btn-stats" title="Estatísticas" aria-label="Ver estatísticas">
@@ -1156,7 +1156,7 @@ function shareResult() {
       c === 'G' ? '[V]' : c === 'A' ? '[A]' : '[X]'
     ).join('');
   });
-  const text = `UrsusTermos ${state.won ? state.guesses.length : 'X'}/6\n\n${lines.join('\n')}\n\nhttps://ursusman.com`;
+  const text = `Termo do Ursus ${state.won ? state.guesses.length : 'X'}/6\n\n${lines.join('\n')}\n\nhttps://ursusman.com`;
   if (navigator.share) {
     navigator.share({ text });
   } else {
