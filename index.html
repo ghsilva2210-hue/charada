@@ -44,7 +44,6 @@
       min-height: 100vh;
     }
 
-    /* ── HEADER ── */
     header {
       display: flex;
       align-items: center;
@@ -102,18 +101,16 @@
     .icon-btn:active { transform: scale(0.95); }
     .icon-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* ── MAIN ── */
     main {
       max-width: 540px;
       margin: 0 auto;
-      padding: 24px 16px 120px;
+      padding: 24px 16px 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
     }
 
-    /* ── TOAST ── */
     #toast-container {
       position: fixed;
       top: 80px;
@@ -139,7 +136,6 @@
     @keyframes toastIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
     @keyframes toastOut { from { opacity:1; } to { opacity:0; } }
 
-    /* ── GAME STATS BAR ── */
     .stats-bar {
       display: flex;
       gap: 16px;
@@ -156,7 +152,6 @@
     .stat-chip .value { font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1; }
     .stat-chip .label { font-size: 10px; font-weight: 500; color: var(--gray-mid); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* ── GRID ── */
     .board {
       display: flex;
       flex-direction: column;
@@ -201,35 +196,18 @@
       100%{ transform: scale(1); }
     }
 
-    .cell.flip {
-      animation: flip 0.5s ease forwards;
-    }
-
+    .cell.flip { animation: flip 0.5s ease forwards; }
     @keyframes flip {
       0%   { transform: rotateX(0deg); }
       50%  { transform: rotateX(-90deg); }
       100% { transform: rotateX(0deg); }
     }
 
-    .cell.correct {
-      background: var(--green);
-      border-color: var(--green-dark);
-      color: #fff;
-    }
-    .cell.present {
-      background: var(--yellow);
-      border-color: var(--yellow-dark);
-      color: #fff;
-    }
-    .cell.absent {
-      background: var(--absent);
-      border-color: var(--absent-border);
-      color: var(--gray-mid);
-    }
+    .cell.correct { background: var(--green); border-color: var(--green-dark); color: #fff; }
+    .cell.present { background: var(--yellow); border-color: var(--yellow-dark); color: #fff; }
+    .cell.absent  { background: var(--absent); border-color: var(--absent-border); color: var(--gray-mid); }
 
-    .cell.shake {
-      animation: shake 0.4s ease;
-    }
+    .cell.shake { animation: shake 0.4s ease; }
     @keyframes shake {
       0%,100%{ transform: translateX(0); }
       20%    { transform: translateX(-6px); }
@@ -238,9 +216,7 @@
       80%    { transform: translateX(4px); }
     }
 
-    .cell.bounce {
-      animation: bounce 0.6s ease;
-    }
+    .cell.bounce { animation: bounce 0.6s ease; }
     @keyframes bounce {
       0%,100%{ transform: translateY(0); }
       40%    { transform: translateY(-12px); }
@@ -254,7 +230,7 @@
       left: 0;
       right: 0;
       background: linear-gradient(to top, rgba(6,15,30,0.98) 80%, transparent);
-      padding: 12px 10px 20px;
+      padding: 10px 10px 0;
       display: flex;
       flex-direction: column;
       gap: 7px;
@@ -291,7 +267,44 @@
     .key.present { background: var(--yellow); }
     .key.absent  { background: var(--absent); color: var(--gray-mid); }
 
-    /* ── MODAL BASE ── */
+    /* ── SOCIAL BAR ── */
+    .social-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 10px 0 18px;
+      width: 100%;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(74, 144, 226, 0.4);
+      background: rgba(74, 144, 226, 0.08);
+      color: #4a90e2;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+      box-shadow: 0 0 8px rgba(74, 144, 226, 0.2), inset 0 0 8px rgba(74, 144, 226, 0.05);
+    }
+    .social-link:hover {
+      transform: scale(1.12);
+      border-color: rgba(74, 144, 226, 0.9);
+      background: rgba(74, 144, 226, 0.18);
+      box-shadow: 0 0 16px rgba(74, 144, 226, 0.6), 0 0 32px rgba(74, 144, 226, 0.25), inset 0 0 10px rgba(74, 144, 226, 0.1);
+      color: #7ab8ff;
+    }
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ── MODALS ── */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -340,7 +353,6 @@
     }
     .modal { position: relative; }
 
-    /* ── HOW TO PLAY ── */
     .how-step {
       display: flex;
       gap: 12px;
@@ -370,7 +382,6 @@
     .how-step p { font-size: 14px; color: var(--gray-light); line-height: 1.5; }
     .how-step strong { color: var(--white); }
 
-    /* ── RESULT MODAL ── */
     .result-word {
       text-align: center;
       font-size: 15px;
@@ -385,18 +396,6 @@
       color: var(--gold);
       margin-bottom: 20px;
       text-transform: uppercase;
-    }
-    .result-win {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .result-tries {
-      text-align: center;
-      font-size: 14px;
-      color: var(--gray-mid);
-      margin-bottom: 24px;
     }
 
     .result-stats {
@@ -436,7 +435,6 @@
     .btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .btn-full { grid-column: 1 / -1; }
 
-    /* ── DISTRIBUTION CHART ── */
     .dist-row {
       display: flex;
       align-items: center;
@@ -448,7 +446,6 @@
     .dist-bar { height: 100%; background: var(--blue-accent); border-radius: 4px; display: flex; align-items: center; padding: 0 8px; font-size: 12px; font-weight: 700; min-width: 28px; transition: width 0.5s ease; }
     .dist-bar.highlight { background: var(--green); }
 
-    /* ── SETTINGS ── */
     .setting-row {
       display: flex;
       align-items: center;
@@ -480,16 +477,9 @@
     }
     .toggle.on::after { transform: translateX(22px); }
 
-    /* ── DIFFICULTY PICKER ── */
-    .mode-tabs {
-      display: flex;
-      gap: 6px;
-      width: 100%;
-      margin-bottom: 4px;
-    }
+    .mode-tabs { display: flex; gap: 6px; }
     .mode-tab {
-      flex: 1;
-      padding: 10px 8px;
+      padding: 6px 12px;
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.05);
@@ -498,42 +488,23 @@
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      text-align: center;
       transition: all 0.2s;
     }
-    .mode-tab.active {
-      background: var(--blue-accent);
-      border-color: var(--blue-accent);
-      color: #fff;
-    }
+    .mode-tab.active { background: var(--blue-accent); border-color: var(--blue-accent); color: #fff; }
 
-    /* ── DIVIDER ── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--gray-mid);
-      align-self: flex-start;
-      margin-bottom: -10px;
-    }
+    .divider { width: 100%; height: 1px; background: rgba(255,255,255,0.08); }
 
     @media (max-width: 380px) {
       .cell { font-size: 18px; }
       .key { height: 46px; min-width: 30px; font-size: 12px; }
       .key.wide { min-width: 48px; }
+      .social-link { width: 36px; height: 36px; }
+      .social-link svg { width: 16px; height: 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="header-logo">
     <img src="https://res.cloudinary.com/dzoeidwur/image/upload/v1782147266/Logo_oficial-removebg-preview_1_l3jgen.png" alt="Ursusman" />
@@ -552,26 +523,51 @@
   </div>
 </header>
 
-<!-- TOAST -->
 <div id="toast-container"></div>
 
-<!-- MAIN GAME AREA -->
 <main>
   <div class="stats-bar" id="stats-bar">
     <div class="stat-chip"><div class="value" id="bar-wins">0</div><div class="label">Vitórias</div></div>
     <div class="stat-chip"><div class="value" id="bar-streak">0</div><div class="label">Sequência</div></div>
-    <div class="stat-chip"><div class="value" id="bar-played">0</div><div class="label">Jogados</div></div>
+    <div class="stat-chip"><div class="value" id="bar-record">0</div><div class="label">Recorde</div></div>
     <div class="stat-chip"><div class="value" id="bar-winpct">0%</div><div class="label">% Vitória</div></div>
   </div>
 
   <div class="board" id="board"></div>
 </main>
 
-<!-- KEYBOARD -->
 <div id="keyboard">
   <div class="kb-row" id="kb-row-1"></div>
   <div class="kb-row" id="kb-row-2"></div>
   <div class="kb-row" id="kb-row-3"></div>
+
+  <!-- REDES SOCIAIS -->
+  <div class="social-bar">
+    <!-- Twitch -->
+    <a class="social-link" href="https://www.twitch.tv/URSUSMANOFICIAL" target="_blank" rel="noopener" aria-label="Twitch">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+      </svg>
+    </a>
+    <!-- Instagram -->
+    <a class="social-link" href="https://www.instagram.com/ursusmanoficial/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <!-- YouTube -->
+    <a class="social-link" href="https://www.youtube.com/@ursusmanoficial" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </a>
+    <!-- TikTok -->
+    <a class="social-link" href="https://tiktok.com/@ursusmanoficial" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+      </svg>
+    </a>
+  </div>
 </div>
 
 <!-- HOW TO PLAY MODAL -->
@@ -636,7 +632,7 @@
     </div>
     <div class="setting-row">
       <div>
-        <div class="setting-label">Modo Daltônico</div>
+        <div class="setting-label">Modo Daltonico</div>
         <div class="setting-sub">Alto contraste para cores</div>
       </div>
       <button class="toggle" id="toggle-color" role="switch" aria-checked="false"></button>
@@ -652,9 +648,9 @@
       <div>
         <div class="setting-label">Dificuldade</div>
       </div>
-      <div class="mode-tabs" style="width:auto;gap:4px;">
-        <button class="mode-tab active" data-diff="normal" style="flex:none;padding:6px 12px;">Normal</button>
-        <button class="mode-tab" data-diff="hard" style="flex:none;padding:6px 12px;">Dificil</button>
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-diff="normal">Normal</button>
+        <button class="mode-tab" data-diff="hard">Dificil</button>
       </div>
     </div>
     <div class="divider" style="margin:16px 0;"></div>
@@ -684,7 +680,6 @@
 </div>
 
 <script>
-// ── WORD LISTS ──
 const WORDS = [
   'ABRIR','ABUSO','ACASO','ACENO','ACIMA','ACRES','ADEUS','ADIAR','ADOTE','AFETO',
   'AGORA','AGOSTO','AGUDA','AGUDO','AINDA','AJUDA','ALADO','ALAMO','ALEGA','ALETA',
@@ -703,18 +698,18 @@ const WORDS = [
   'CASPA','CASSE','CAUSA','CEDER','CELTA','CENAS','CERCO','CERNE','CERTO','CHAVE',
   'CHEIO','CHUVA','CINCO','CISNE','CITAR','CLARO','COBRA','COCAR','COISA','COLOR',
   'COMBO','COMES','CONCH','CONTO','COPIA','CORES','CORPO','CORTE','CRISE','CRUSH',
-  'CUECA','CULPA','CUNHA','CUPIM','CURTO','DANÇA','DATAR','DECOR','DENTE','DESSA',
+  'CUECA','CULPA','CUNHA','CUPIM','CURTO','DANCA','DATAR','DECOR','DENTE','DESSA',
   'DEVER','DICAS','DIZER','DOCAS','DOCES','DOIDO','DONAR','DORSO','DOUTR','DRAMA',
   'DUELO','DUQUE','DUROS','EBANO','ELEVE','EMOCI','EMOLA','ENCHE','ENTRE','EPOCH',
   'ERRAR','ESCOL','ESTOU','ETAPA','FACAO','FACHO','FACIL','FALHA','FALTA','FARDO',
   'FATIA','FATOR','FAVOR','FAXIM','FEBRE','FEDER','FEITO','FELIZ','FEMEA','FENDA',
   'FERIA','FESSA','FESTA','FIAPO','FILHO','FILME','FINCA','FINOS','FIRME','FIXAR',
   'FLOCO','FLUIR','FLUXO','FOBIA','FOCAR','FOLHA','FONTE','FORCA','FORMA',
-  'FOSCO','FOTO','FRACO','FRADE','FRANGA','FREIO','FRETE','FRICA','FRIOS','FRUTO',
-  'FUMAR','FUNDO','FUNIL','FURIA','FUSAO','FUZUE','GARRA','GATOS','GAUSS','GELEI',
+  'FOSCO','FRACO','FRADE','FREIO','FRETE','FRIOS','FRUTO',
+  'FUMAR','FUNDO','FUNIL','FURIA','FUSAO','FUZUE','GARRA','GATOS','GELEI',
   'GERAL','GIRAR','GLOBO','GOLPE','GORDO','GRACA','GRAMA','GRITO','GRUPO','GUIAS',
-  'HEROI','HIENA','HIPNO','HONRA','HORTA','HOTEL','HUMOR','IDEIA','IGUAL','IMAGO',
-  'INCRV','INERTE','INOVA','INSAO','ISOLO','ITEM','JARDA','JOGAR','JORRA','JUDEU',
+  'HEROI','HIENA','HONRA','HORTA','HOTEL','HUMOR','IDEIA','IGUAL','IMAGO',
+  'INOVA','JARDA','JOGAR','JORRA','JUDEU',
   'JUIZO','JUNTO','JURAR','LACAR','LADRA','LADRO','LAICO','LANCE','LARGO','LARVA',
   'LASER','LATAO','LAVAR','LEGAL','LEITE','LENHA','LEQUE','LEVAR','LICAO','LIDAR',
   'LINHA','LIVRO','LOGRO','LONGE','LONGA','LOUVA','LUCRO','LUTAR','MACIO','MACRO',
@@ -727,192 +722,188 @@ const WORDS = [
   'PATOS','PAGAR','PAUTA','PAVIO','PEDAL','PEDRA','PELCO','PELES','PENAS','PENSO',
   'PERDA','PERTO','PESAR','PICOR','PILAR','PILHA','PIRAR','PISTA','PIXEL','PLANO',
   'PLENA','PODER','POEMA','POLVO','PONTE','PORTA','POSSE','POSTO','POTRO','POUPO',
-  'PRATA','PRECE','PRETO','PRIMA','PROVA','PULSO','PUNHA','PURGE','QUADR','QUASE',
-  'QUEDA','RADAR','RALAR','RAMOS','RAPAZ','RASTO','RAZAO','RECTO','REDE','REFAZ',
+  'PRATA','PRECE','PRETO','PRIMA','PROVA','PULSO','PUNHA','PURGE','QUASE',
+  'QUEDA','RADAR','RALAR','RAMOS','RAPAZ','RASTO','RAZAO','RECTO','REFAZ',
   'REGRA','REMAR','RENAL','REPOR','REZAR','RITMO','RIVAL','ROCHA','ROLHA','RONCO',
-  'ROSTO','RUIDO','SABRE','SACAO','SACOL','SAFRA','SANAR','SAUDE','SEARA','SECAS',
+  'ROSTO','RUIDO','SABRE','SAFRA','SANAR','SAUDE','SEARA','SECAS',
   'SECAR','SEGUE','SELVA','SENHA','SENSO','SIGLA','SIMBO','SIRVA','SISAL','MEIAS',
   'SOBRE','SOCIO','SOLAR','SOLDO','SOPRO','SORTE','SUAVE','SURGE','TABUA','TALCO',
   'TALAR','TANTO','TAPIR','TARDE','TARSO','TELHA','TEMPO','TENRO','TERRA','TESAO',
-  'TEXTO','TIMBO','TINTA','TIPIC','TIRAR','TIRSO','TOCAR','TOLDO','TOMAR','TOPAR',
-  'TORTO','TOTAL','TOUCA','TRAGO','TRAMA','TRAPO','TRAZO','TROCO','TROMP','TROVA',
-  'TURBO','TURMA','UBERE','ULTRA','UNICA','UNIDO','URRAR','USINA','USUAL','VALER',
-  'VALOR','VALSA','VAROA','VEADO','VELHA','VELHO','VENTO','VERBO','VERDE','VERSO',
-  'VILAR','VIOLA','VIRAR','VISAO','VISTA','VIVIA','VOCAL','VOTAR','VULTO','XADRE',
-  'ZOMBI','ZUNIR','URSUS','SOSIA','RUSSO','RUSSA',
-  // palavras validas adicionais
-'ABALO','ABATE','ABRIL','ABRIR','ABUSO','ACABA','ACABE','ACARA',
-'ACARI','ACASO','ACIMA','ACOES','ACUSA','ADEGA','ADEUS','ADOBE',
-'ADORO','AEREO','AFETA','AFIAR','AFETO','AFINS','AGORA','AGUAS',
-'AGUIA','AINDA','AJUDA','AJUDE','ALBUM','ALEGA','ALEMA','ALFAS',
-'ALGAS','ALGOZ','ALGUM','ALIAS','ALMAS','ALPES','ALTAR','ALTAS',
-'ALTOS','ALUNO','AMADA','AMADO','AMAPA','AMARA','AMARO','AMAVA',
-'AMBAS','AMBOS','AMENA','AMIGA','AMIGO','AMPLA','AMPLO','ANDAR',
-'ANEIS','ANIMA','ANIME','ANJOS','ANEXO','ANUAL','AONDE','APELO',
-'APOIA','APOIO','ARABE','ARAME','ARCOS','AREAL','AREIA','ARENA',
-'AROMA','ARROZ','ARTES','ASSIM','ASTRO','ATACA','ATLAS','ATRAS',
-'ATRIZ','ATUAM','ATUAR','ATUAL','AUTOR','AUTOS','AVIDA','AVISA',
-'AVISO','AVIAO','AVISE','BACIA','BAHIA','BAILE','BAIXA','BAIXE',
-'BAIXO','BALAO','BALAS','BALDE','BANCA','BANCO','BANDA','BANDO',
-'BANHO','BARBA','BARCA','BARCO','BARAO','BARRO','BASTA','BATER',
-'BATOM','BAURU','BEBEM','BEBER','BEIRA','BEIJO','BELAS','BELOS',
-'BENTO','BERCO','BESTA','BICHO','BIQUE','BISPO','BLOCO','BLUSA',
-'BOCAS','BOCAL','BODAS','BOIAR','BOLAS','BOLHA','BOLSA','BOLSO',
-'BOMBA','BONUS','BORDA','BORDO','BOTAS','BOTAO','BOTAR','BRACO',
-'BRAGA','BRASA','BRAVA','BRAVO','BREVE','BRIGA','BRISA','BRUTO',
-'BUCAL','BUNDA','BURRO','BUSCA','CABOS','CABRA','CACAU','CACHA',
-'CACTO','CAFES','CAIAR','CAIDA','CAIDO','CAIXA','CALCA','CALDA',
-'CALDO','CALMA','CALMO','CALOR','CAMPA','CAMPO','CANAL','CANIL',
-'CANTA','CANTO','CAPAS','CAPAZ','CAPIM','CARAS','CARGA','CARGO',
-'CARMO','CARNE','CARRO','CARTA','CASAL','CASAS','CASCA','CASCO',
-'CASAR','CASOS','CAUDA','CAUSA','CAVAR','CAXIA','CEDER','CELTA',
-'CENSO','CENTO','CERCA','CERTA','CERTO','CESAR','CESTA','CETIM',
-'CHAGA','CHAMA','CHAME','CHAMO','CHAPA','CHATA','CHATO',
-'CHAVE','CHECA','CHEFE','CHEIA','CHEIO','CHEGO','CHINA','CHORA',
-'CHORO','CHUTE','CHUVA','CICLO','CIFRA','CINCO','CINTA','CINTO',
-'CINZA','CIRCO','CISCO','CITAR','CIVEL','CIVIL','CLARA','CLARO',
-'CLIMA','CLIPE','CLUBE','COBRA','COBRE','COCAR','COCOR','COFRE',
-'COISA','COLAR','COLAS','COLMO','COLOR','COMER','COMBO','COMUM',
-'CONDE','CONGE','CONTE','CONTO','COPIA','COPOS','CORAL','CORDA',
-'CORES','CORNO','COROA','CORPO','CORRA','CORRE','CORSA','CORTE',
-'COSER','COSTA','COSTO','COTAR','COTAS','COURO','COUTO','COUVE',
-'CRAVO','CREIO','CREME','CRIAM','CRIEI','CRIME','CRISE','CRUEL',
-'CUBRA','CUIDA','CUIDE','CULPA','CULTO','CUPIM','CUPOM','CURAR',
-'CURTA','CURTE','CURTI','CURTO','CURVA','DADOS','DAMOS','DANCA',
-'DANDO','DAQUI','DARIA','DATAS','DEDOS','DEIXA','DEIXE','DEIXO',
-'DELAS','DELES','DELTA','DEMOS','DENTE','DEPOR','DESCE','DESSE',
-'DESTA','DESTE','DETEM','DETER','DEUSA','DEVEM','DEVIA','DEVER',
-'DIABO','DICAS','DIETA','DIGAM','DIGNO','DIGNA','DIREI','DIRIA',
-'DISCO','DISSE','DISSO','DITAR','DITAS','DITOS','DIZEM','DIZIA',
-'DOBRA','DOBRO','DOCES','DOIDO','DOIDA','DOLAR','DORES','DORME',
-'DOSES','DOURA','DOURO','DRAMA','DUCHA','DUELO','DUETO','DUPLA',
-'DUPLO','DUQUE','DURAR','DURAS','DUROU','DUZIA','EDUCA','EGITO',
-'ELEVA','ELITE','EMITE','ENTRA','ENTRE','ENTRO','ENTAO','ENVIA',
-'ENVIE','ENVIO','EPOCA','ERETO','ERROS','ESSAS','ESSES','ESTAR',
-'ESTAS','ESTES','ESTOU','ETAPA','ETICA','ETICO','EVITA','EVITE',
-'EXAME','EXATO','EXIGE','EXPOR','EXPOE','EXTRA','FACAO','JEANS',
-'FADAS','FAIXA','FALAI','FALAM','FALAS','FALHA','FALTA','FALSO',
-'FALSA','FARAM','FARAO','FARIA','FAROL','FASES','FATAL','FATIA',
-'FATOS','FATOR','FAUNA','FAVOR','FAZEM','FAZIA','FECHA','FECHE',
-'FECHO','FEITA','FEITO','FEZES','FELIZ','FEMEA','FERRO','FERVO',
-'FESTA','FIBRA','FICAM','FICAR','FICHA','FIQUE','FIEIS','FILAS',
-'FILHA','FILHO','FILME','FINCA','FINCO','FINAL','FIRMA','FIRME',
-'FITAS','FIXAR','FLOCA','FLORA','FLUXO','FLUIR','FOCAR','FOICE',
-'FOGAO','FOGOS','FOLGA','FOLHA','FOLIA','FOMOS','FONTE','FORCA',
-'FOREM','FORNO','FORRO','FORTE','FORUM','FOSSE','FRACA','FRACO',
-'FRASE','FREIO','FRETE','FRIAS','FRIOS','FROTA','FRUTA','FRUTO',
-'FUGIR','FUMAR','FUNDA','FUNDO','FUNIL','FURIA','FURTO','FUSAM',
-'FUSAO','FUSCA','FUZIL','GALAN','GAMAO','GANHA','GANHE','GANHO',
-'GARFO','GAROA','GARRA','GASES','GASTA','GASTO','GATAS','GAZUA',
-'GENIO','GENTE','GERAL','GERAM','GERAR','GERIR','GESSO','GESTO',
-'GIRAR','GLOBO','GOIAS','GOLFE','GOLPE','GORDA','GORDO','GOSTO',
-'GRACA','GRADE','GRAMA','GRANA','GRAUS','GRAVA','GRAVE','GRECO',
-'GREGA','GREGO','GREVE','GRIFE','GRIPE','GRITA','GRITO','GRUDE',
-'GRUTA','GUARA','GUIAI','GUIAS','GUINA','GUINE','HAURA','HAVER',
-'HAVIA','HEROI','HOMEM','HONRA','HORTA','HORAS','HOTEL','HUMOR',
-'IBOPE','ICONE','IDEIA','IDEAL','IDOLO','IDOSO','IGUAL','ILHAS',
-'IMITA','IMPOR','IMPOS','IMPOE','IMPRO','INCLU','INDIA','INDIO',
-'INDUZ','IRIAM','IRMAS','IRMAM','IRMAO','ITENS','JACAR','JARRA',
-'JATOS','JEITO','JEOVA','JESUS','JIBOA','JOIAS','JOGAM','JOGAR',
-'JOGOS','JOGUE','JOVEM','JULGA','JULHO','JUNTA','JUNTE','JUNTO',
-'JUNHO','JURUA','JUSTA','JUSTO','JUIZA','JUIZO','LABIO','LACOS',
-'LACRA','LAGOA','LAGOS','LANCE','LANCA','LAPIS','LAPSO','LARGA',
-'LARGO','LATAS','LATIM','LATIR','LATIU','LAZER','LEBRE','LEIAM',
-'LEITE','LEITO','LEMOS','LENDA','LENHA','LENTE','LENTO','LEQUE',
-'LERDA','LERDO','LESAM','LESÃO','LESTE','LETRA','LEVAM','LEVAR',
-'LEVES','LICAO','LIDER','LIDAR','LIDAS','LIGAR','LIGUE','LILAS',
-'LIMÃO','LIMPA','LIMPO','LINDA','LINDO','LINHA','LIRIO','LISTA',
-'LITRO','LIVRE','LIVRO','LIXAR','LIXOS','LOIRA','LOBOS','LOCAL',
-'LONGE','LONGO','LOSNA','LOUCA','LOUCO','LOUSA','LUCRO','SKATE',
-'LUGAR','LUTAM','LUTAR','LUTAS','LUVAS','LUZES','LUZIR','MACAR',
-'MACAU','MACHS','MACHO','MACIO','MADRE','MAGIA','MAGRA',
-'MAGRO','MAIOR','MAJOR','MALAS','MALTA','MAMAE','MANDE',
-'MANDO','MANGA','MANIA','MANHA','MANSO','MANTO','MANTA','MAPLE',
-'MARCA','MARCO','MARES','MARIA','MARTE','MARVA','MASSA','MATAR',
-'MATOS','MATOR','MAULA','MECAS','MEDIA','MEDIO','MEDIR','MEIAS',
-'MEIOS','MENOR','MENTE','MERDA','MESES','MESMA','MESMO','METAS',
-'METAL','METER','METRO','MEXER','MICRO','MIDIA','MILHA','MILHO',
-'MINAS','MINHA','MIRIM','MIRRA','MISSA','MISSO','MISTO','MISTA',
-'MOCHO','MOEDA','MOLHA','MOLHE','MOLHO','MONTE','MORAL','MORAM',
-'MORAR','MORRE','MORRO','MORTA','MORTO','MOSCA','MOVEL','MOVER',
-'MUDAM','MUDAS','MUDAR','MUITA','MUITO','MULTA','MULTI','MUNDO',
-'MURAL','MUSAO','MUSEU','MUSGO','NACAO','NADAR','NARIZ','NASCE',
-'NATAL','NAVAL','NAVIO','NEGAE','NEGAR','NEGRA','NELES','NELAS',
-'NEROS','NERVO','NEVES','NICHO','NINHO','NINJA','NISSO','NISTO',
-'NOBEL','NOBRE','NOCAO','NOITE','NOIVA','NOIVO','NORMA','NORTE',
-'NOSSA','NOSSO','NOTAR','NOTES','NOTAS','NOVAS','NOVOS','NOZES',
-'NUVEM','NUNCA','OBRAS','OBTER','OBVIO','OCUPA','ODEIA','ODEIO',
-'OESTE','OLHAI','OLHAR','OLHOS','OMBRO','ONDAS','OPALA','OPCAO',
-'OPERA','OPTAR','ORDEM','ORNAR','OSSOS','OTICA','OTIMO','OUVIA',
-'OUVIR','PACTO','PADRE','PAGAM','PAGAR','PAGAS','PAGUE','PAIOL',
-'PALCO','PALHA','PALMA','PALMO','PANDO','PANOS','PAPAI','PAPEL',
-'PAQUE','PARAR','PARAM','PARDA','PARIS','PARTO','PARTE','PASSA',
-'PASSE','PASSO','PASTA','PASTO','PATAL','PATAS','PATOS','PATIO',
-'PAULA','PAUSA','PAUTA','PAVAO','PECAS','PEDAL','PEDEM','PEDIA',
-'PEDIR','PEDRA','PEGAR','PEGUE','PEITO','PEIXE','PENAL','PENAS',
-'PENHA','PENSA','PENSO','PENSE','PEPEL','PERCA','PERCO','PERDE',
-'PERDA','PERNA','PERTO','PESCA','PESAR','PIADA','PIANO','PILAR',
-'PILHA','PINTO','PIQUE','PIRES','PISTA','PIZZA','INVES','ENFIM',
-'PLACA','PLANA','PLANO','PLENA','PLENO','PLUMO','POBRE','PODAR',
-'PODEM','PODES','PODIA','PODER','POEMA','POETA','POLIR',
-'PONHA','PONTA','PONTE','PONTO','PORCO','PORTO','PORTE','POREM',
-'POSAR','POSSA','POSSE','POSSO','POSTE','POSTO','POUCA','POUCO',
-'POUSO','POVOS','PRACA','PRADO','PRAGA','PRAIA','PRATA','PRATO',
-'PRAZO','PRECO','PRESA','PRESO','PRETA','PRETO','PREVE','PRIMA',
-'PRIMO','PROSA','PROSE','PROVE','PROVI','PROVA','PULAR',
-'PULSO','PUNHO','PUXAR','QUASE','QUEDA','QUERO','RACAO','RACAS',
-'RACHA','RADAR','RADIO','RAIOS','RAIVA','RAMOS','RAMPA','RAPAZ',
-'RASGO','RASTO','RATOS','RAZÃO','REAIS','RECEM','REDES','REDOR',
-'REGER','REGRA','REINO','RENDA','RENDE','RENAL','RESTA','RESTO',
-'REUNE','REVER','REZAR','RICAS','RIFAR','RIGOR','RILHA','RIMAR',
-'RINDO','RIPAR','RISCA','RISCO','RITMO','RIVAL','ROCHA','RODAS',
-'RODAR','ROLAM','ROLAR','ROMAN','ROMBO','ROMPE','RONCA','ROQUE',
-'ROSAS','ROSCA','ROSTO','ROUBO','ROUPA','RUBRO','RUGAS','RUINA',
-'RUINS','RUIVA','RUIVO','RURAL','RUSSA','RUSSO','SABEM','SABER',
-'SABES','SABIA','SABIO','SABAO','SAFRA','SAIAR','SAIAS','SAIDA',
-'SAIDO','SAIBA','SAIRA','SALAM','SALAO','SALMO','SALSA','SALTO',
-'SALVA','SALVE','SALVO','SAMBA','SANTA','SANTO','SARNA','SAUDE',
-'SAUNA','SECAO','SECAS','SECOS','SECAR','SEGUE','SEGUI','SEIAM',
-'SEJAM','SEIOS','SEIVA','SEMEA','SENAO','SENSO','SENTA','SENTE',
-'SENTI','SERAO','SEREI','SEREM','SERES','SERIA','SERIE','SERPE',
-'SERRA','SERVO','SERIO','SETOR','SEXOS','SEXTO','SIGLA','SIGIL',
-'SIGNO','SILVA','SINAL','SINTA','SINTO','SIRVA','SITIO','SOBRA',
-'SOCAR','SODIO','SOFRE','SOGRA','SOGRO','SOLAR','SOLDA',
-'SOLTA','SOLTO','SOMAR','SOMOS','SONHA','SONHO','SORRI','SORVO',
-'SUVIA','SUBIR','SUAVE','SUGAR','SUICA','SULCO','SUPER','SUPRA',
-'SURGE','SURJA','SURJO','SURRA','SUSTO','SUTIL','TAIPA','TAMBO',
-'TAMPA','TANQU','TARDE','TARJA','TAXAR','TAXAS','TECLA','TEMAS',
-'TEMER','TEMOR','TEMOS','TENAZ','TENDA','TENDE','TENGO','TENHA',
-'TENHO','TENIS','TENTO','TERAM','TERAO','TERCO','TEREI','TEREM',
-'TERMO','TERCA','TERRA','TERNO','TESAR','TESAO','TESTA','TESTE',
-'TEXTO','TCHAU','TIMAO','TINTA','TINTO','TIRAR','TIRAS','TIROS',
-'TOCAR','TOQUE','TOLAS','TOLHE','TOLHI','TOMAM','TOMAR','TONTO',
-'TORCE','TORNA','TORNE','TORTO','TORRE','TORNO','TORTA','TOUCA',
-'TOURO','TRAMA','TRAME','TRAVA','TRAVE','TRAVO','TRACO','TRAGA',
-'TRAGO','TRARA','TREPA','TREVO','TREZE','TRIBO','TRIGO','TRINA',
-'TRONO','TROCA','TROCO','TUMOR','TURMA','TURNO','TURNE','TURBO',
-'TUNEL','UNGIR','UNHAS','UNIAO','UNIDO','UNTAR','URINA','URSUS',
-'URSOS','USADO','USAVA','USINA','USURA','UTEIS','UTERO','VACUO',
-'VADIA','VAGAS','VALEM','VALER','VALES','VALEU','VALIA','VALOR',
-'VAMOS','VAPOR','VARIA','VASCO','VASTA','VASTO','VEIAS','VEJAM',
-'VELAR','VELAS','VELHA','VELHO','VENAL','VENDA','VENDE','VENHA',
-'VENHO','VENTO','VERBA','VERBO','VERDE','VEREM','VERME','VERAO',
-'VERSA','VERSO','VESPA','VESTE','VETOR','VEZES','VIAJA','VIBRA',
-'VICIO','VIDEO','VIDAS','VIDRO','VIGAS','VIGOR','VILAO','VIMOS',
-'VINCO','VINDA','VINDE','VINHA','VINHO','VINIL','VINTE','VIOLA',
-'VIRAR','VIRUS','VISAM','VISAO','VISTO','VIVAM','VIVAS','VIVEM',
-'VIVER','VIVIA','VIVOS','VIUVA','VOCES','VODCA','VOLEI','VOLTA',
-'VOLTE','VOLTO','VOTOS','VOSSA','VOSSO','VOZES','XIQUE','YOGUE',
-'ZANGA','ZARPA','ZONAL','ZUMBI','CIUME','RUBRE','DAMAS','FILOS',
-'CUSTO','SURDO','RITOS','FITOS','TIPOS','REVES','LEMES','REFEM',
-'FEMUR','UIVOS','SUMIR','RUGIR'
-  
+  'TEXTO','TIMBO','TINTA','TIRAR','TOCAR','TOLDO','TOMAR','TOPAR',
+  'TORTO','TOTAL','TOUCA','TRAGO','TRAMA','TRAPO','TROCO','TROVA',
+  'TURBO','TURMA','ULTRA','UNICA','UNIDO','URRAR','USINA','USUAL','VALER',
+  'VALOR','VALSA','VEADO','VELHA','VELHO','VENTO','VERBO','VERDE','VERSO',
+  'VILAR','VIOLA','VIRAR','VISAO','VISTA','VIVIA','VOCAL','VOTAR','VULTO',
+  'ZOMBI','ZUNIR','URSUS','SOSIA','RUSSO','RUSSA','URSOS'
+  'ABALO','ABATE','ABRIL','ACABA','ACARA','ODIAR',
+  'ACARI','ACASO','ACIMA','ACOES','ACUSA','ADEGA','ADEUS','ADOBE',
+  'ADORO','AFETA','AFIAR','AFETO','AFINS','AGORA','AGUAS',
+  'AGUIA','AINDA','AJUDA','AJUDE','ALBUM','ALEGA','ALEMA',
+  'ALGAS','ALGOZ','ALGUM','ALIAS','ALMAS','ALPES','ALTAR','ALTAS',
+  'ALTOS','ALUNO','AMADA','AMADO','AMAPA','AMARA','AMARO','AMAVA',
+  'AMBAS','AMBOS','AMENA','AMIGA','AMIGO','AMPLA','AMPLO','ANDAR',
+  'ANEIS','ANIMA','ANIME','ANJOS','ANEXO','ANUAL','AONDE','APELO',
+  'APOIA','APOIO','ARABE','ARAME','ARCOS','AREAL','AREIA','ARENA',
+  'AROMA','ARROZ','ARTES','ASSIM','ASTRO','ATACA','ATLAS','ATRAS',
+  'ATRIZ','ATUAM','ATUAR','ATUAL','AUTOR','AUTOS','AVIDA','AVISA',
+  'AVISO','AVIAO','AVISE','BACIA','BAHIA','BAILE','BAIXA','BAIXE',
+  'BAIXO','BALAO','BALAS','BALDE','BANCA','BANCO','BANDA','BANDO',
+  'BANHO','BARBA','BARCA','BARCO','BARAO','BARRO','BASTA','BATER',
+  'BATOM','BEBEM','BEBER','BEIRA','BEIJO','BELAS','BELOS',
+  'BENTO','BERCO','BESTA','BICHO','BIQUE','BISPO','BLOCO','BLUSA',
+  'BOCAS','BOCAL','BODAS','BOIAR','BOLAS','BOLHA','BOLSA','BOLSO',
+  'BOMBA','BONUS','BORDA','BORDO','BOTAS','BOTAO','BOTAR','BRACO',
+  'BRAGA','BRASA','BRAVA','BRAVO','BREVE','BRIGA','BRISA','BRUTO',
+  'BUCAL','BUNDA','BURRO','BUSCA','CABOS','CABRA','CACAU','CACHA',
+  'CACTO','CAFES','CAIAR','CAIDA','CAIDO','CAIXA','CALCA','CALDA',
+  'CALDO','CALMA','CALMO','CALOR','CAMPA','CAMPO','CANAL','CANIL',
+  'CANTA','CANTO','CAPAS','CAPAZ','CAPIM','CARAS','CARGA','CARGO',
+  'CARMO','CARNE','CARRO','CARTA','CASAL','CASAS','CASCA','CASCO',
+  'CASAR','CASOS','CAUDA','CAUSA','CAVAR','CEDER','CELTA',
+  'CENSO','CENTO','CERCA','CERTA','CERTO','CESAR','CESTA',
+  'CHAMA','CHAME','CHAMO','CHAPA','CHATA','CHATO',
+  'CHAVE','CHECA','CHEFE','CHEIA','CHEIO','CHEGO','CHINA','CHORA',
+  'CHORO','CHUTE','CHUVA','CICLO','CIFRA','CINCO','CINTA','CINTO',
+  'CINZA','CIRCO','CISCO','CITAR','CIVEL','CIVIL','CLARA','CLARO',
+  'CLIMA','CLIPE','CLUBE','COBRA','COBRE','COCAR','COCOR','COFRE',
+  'COISA','COLAR','COLAS','COLMO','COLOR','COMER','COMBO','COMUM',
+  'CONDE','CONTE','CONTO','COPIA','COPOS','CORAL','CORDA',
+  'CORES','CORNO','COROA','CORPO','CORRA','CORRE','CORSA','CORTE',
+  'COSER','COSTA','COSTO','COTAR','COTAS','COURO','COUTO','COUVE',
+  'CRAVO','CREIO','CREME','CRIAM','CRIEI','CRIME','CRISE','CRUEL',
+  'CUBRA','CUIDA','CUIDE','CULPA','CULTO','CUPIM','CUPOM','CURAR',
+  'CURTA','CURTE','CURTI','CURTO','CURVA','DADOS','DAMOS','DANCA',
+  'DANDO','DAQUI','DARIA','DATAS','DEDOS','DEIXA','DEIXE','DEIXO',
+  'DELAS','DELES','DELTA','DEMOS','DENTE','DEPOR','DESCE','DESSE',
+  'DESTA','DESTE','DETEM','DETER','DEUSA','DEVEM','DEVIA','DEVER',
+  'DIABO','DICAS','DIETA','DIGAM','DIGNO','DIGNA','DIREI','DIRIA',
+  'DISCO','DISSE','DISSO','DITAR','DITAS','DITOS','DIZEM','DIZIA',
+  'DOBRA','DOBRO','DOCES','DOIDO','DOIDA','DOLAR','DORES','DORME',
+  'DOSES','DOURA','DOURO','DRAMA','DUCHA','DUELO','DUETO','DUPLA',
+  'DUPLO','DUQUE','DURAR','DURAS','DUROU','DUZIA','EDUCA',
+  'ELEVA','ELITE','EMITE','ENTRA','ENTRE','ENTRO','ENTAO','ENVIA',
+  'ENVIE','ENVIO','EPOCA','ERETO','ERROS','ESSAS','ESSES','ESTAR',
+  'ESTAS','ESTES','ESTOU','ETAPA','ETICA','ETICO','EVITA','EVITE',
+  'EXAME','EXATO','EXIGE','EXPOR','EXTRA','JEANS',
+  'FADAS','FAIXA','FALAI','FALAM','FALAS','FALHA','FALTA','FALSO',
+  'FALSA','FARAM','FARAO','FARIA','FAROL','FASES','FATAL','FATIA',
+  'FATOS','FATOR','FAUNA','FAVOR','FAZEM','FAZIA','FECHA','FECHE',
+  'FECHO','FEITA','FEITO','FEZES','FELIZ','FEMEA','FERRO','FERVO',
+  'FESTA','FIBRA','FICAM','FICAR','FICHA','FIQUE','FIEIS','FILAS',
+  'FILHA','FILHO','FILME','FINCA','FINCO','FINAL','FIRMA','FIRME',
+  'FITAS','FIXAR','FLORA','FLUXO','FLUIR','FOCAR','FOICE',
+  'FOGAO','FOGOS','FOLGA','FOLHA','FOLIA','FOMOS','FONTE','FORCA',
+  'FOREM','FORNO','FORRO','FORTE','FORUM','FOSSE','FRACA','FRACO',
+  'FRASE','FREIO','FRETE','FRIAS','FRIOS','FROTA','FRUTA','FRUTO',
+  'FUGIR','FUMAR','FUNDA','FUNDO','FUNIL','FURIA','FURTO',
+  'FUSAO','FUZIL','GALAN','GAMAO','GANHA','GANHE','GANHO',
+  'GARFO','GAROA','GARRA','GASES','GASTA','GASTO','GATAS',
+  'GENIO','GENTE','GERAL','GERAM','GERAR','GERIR','GESSO','GESTO',
+  'GIRAR','GLOBO','GOIAS','GOLFE','GOLPE','GORDA','GORDO','GOSTO',
+  'GRACA','GRADE','GRAMA','GRANA','GRAUS','GRAVA','GRAVE',
+  'GREVE','GRIFE','GRIPE','GRITA','GRITO','GRUDE',
+  'GRUTA','GUARA','GUIAI','GUIAS','GUINA','GUINE','HAVER',
+  'HAVIA','HEROI','HOMEM','HONRA','HORTA','HORAS','HOTEL','HUMOR',
+  'ICONE','IDEIA','IDEAL','IDOLO','IDOSO','IGUAL','ILHAS',
+  'IMITA','IMPOR','INDIA','INDIO',
+  'INDUZ','IRIAM','IRMAS','IRMAM','IRMAO','ITENS','JACAR','JARRA',
+  'JATOS','JEITO','JIBOA','JOIAS','JOGAM','JOGAR',
+  'JOGOS','JOGUE','JOVEM','JULGA','JULHO','JUNTA','JUNTE','JUNTO',
+  'JUNHO','JURUA','JUSTA','JUSTO','JUIZA','JUIZO','LABIO','LACOS',
+  'LACRA','LAGOA','LAGOS','LANCE','LANCA','LAPIS','LAPSO','LARGA',
+  'LARGO','LATAS','LATIM','LATIR','LATIU','LAZER','LEBRE','LEIAM',
+  'LEITE','LEITO','LEMOS','LENDA','LENHA','LENTE','LENTO','LEQUE',
+  'LERDA','LERDO','LESTE','LETRA','LEVAM','LEVAR',
+  'LEVES','LICAO','LIDER','LIDAR','LIDAS','LIGAR','LIGUE','LILAS',
+  'LIMPA','LIMPO','LINDA','LINDO','LINHA','LIRIO','LISTA',
+  'LITRO','LIVRE','LIVRO','LIXAR','LOIRA','LOBOS','LOCAL',
+  'LONGE','LONGO','LOUCA','LOUCO','LOUSA','LUCRO','SKATE',
+  'LUGAR','LUTAM','LUTAR','LUTAS','LUVAS','LUZES','LUZIR',
+  'MACAU','MACHO','MACIO','MADRE','MAGIA','MAGRA',
+  'MAGRO','MAIOR','MAJOR','MALAS','MALTA','MAMAE','MANDE',
+  'MANDO','MANGA','MANIA','MANHA','MANSO','MANTO','MANTA',
+  'MARCA','MARCO','MARES','MARIA','MARTE','MASSA','MATAR',
+  'MATOS','MEDIA','MEDIO','MEDIR','MEIAS',
+  'MEIOS','MENOR','MENTE','MERDA','MESES','MESMA','MESMO','METAS',
+  'METAL','METER','METRO','MEXER','MICRO','MIDIA','MILHA','MILHO',
+  'MINAS','MINHA','MIRRA','MISSA','MISSO','MISTO','MISTA',
+  'MOCHO','MOEDA','MOLHA','MOLHE','MOLHO','MONTE','MORAL','MORAM',
+  'MORAR','MORRE','MORRO','MORTA','MORTO','MOSCA','MOVEL','MOVER',
+  'MUDAM','MUDAS','MUDAR','MUITA','MUITO','MULTA','MULTI','MUNDO',
+  'MURAL','MUSEU','MUSGO','NACAO','NADAR','NARIZ','NASCE',
+  'NATAL','NAVAL','NAVIO','NEGAR','NEGRA','NELES','NELAS',
+  'NERVO','NEVES','NICHO','NINHO','NINJA','NISSO','NISTO',
+  'NOBRE','NOCAO','NOITE','NOIVA','NOIVO','NORMA','NORTE',
+  'NOSSA','NOSSO','NOTAR','NOTAS','NOVAS','NOVOS','NOZES',
+  'NUVEM','NUNCA','OBRAS','OBTER','OBVIO','OCUPA','ODEIA','ODEIO',
+  'OESTE','OLHAI','OLHAR','OLHOS','OMBRO','ONDAS','OPCAO',
+  'OPERA','OPTAR','ORDEM','ORNAR','OSSOS','OTICA','OTIMO','OUVIA',
+  'OUVIR','PACTO','PADRE','PAGAM','PAGAR','PAGAS','PAGUE','PAIOL',
+  'PALCO','PALHA','PALMA','PALMO','PANDO','PANOS','PAPAI','PAPEL',
+  'PAQUE','PARAR','PARAM','PARDA','PARIS','PARTO','PARTE','PASSA',
+  'PASSE','PASSO','PASTA','PASTO','PATAS','PATOS','PATIO',
+  'PAULA','PAUSA','PAUTA','PAVAO','PECAS','PEDAL','PEDEM','PEDIA',
+  'PEDIR','PEDRA','PEGAR','PEGUE','PEITO','PEIXE','PENAL','PENAS',
+  'PENHA','PENSA','PENSO','PENSE','PERCA','PERCO','PERDE',
+  'PERDA','PERNA','PERTO','PESCA','PESAR','PIADA','PIANO','PILAR',
+  'PILHA','PINTO','PIQUE','PIRES','PISTA','PIZZA','INVES','ENFIM',
+  'PLACA','PLANA','PLANO','PLENA','PLENO','POBRE','PODAR',
+  'PODEM','PODES','PODIA','PODER','POEMA','POETA','POLIR',
+  'PONHA','PONTA','PONTE','PONTO','PORCO','PORTO','PORTE','POREM',
+  'POSAR','POSSA','POSSE','POSSO','POSTE','POSTO','POUCA','POUCO',
+  'POUSO','POVOS','PRACA','PRADO','PRAGA','PRAIA','PRATA','PRATO',
+  'PRAZO','PRECO','PRESA','PRESO','PRETA','PRETO','PREVE','PRIMA',
+  'PRIMO','PROSA','PROVE','PROVI','PROVA','PULAR',
+  'PULSO','PUNHO','PUXAR','QUASE','QUEDA','QUERO','RACAO','RACAS',
+  'RACHA','RADAR','RADIO','RAIOS','RAIVA','RAMOS','RAMPA','RAPAZ',
+  'RASGO','RASTO','RATOS','REAIS','RECEM','REDES','REDOR',
+  'REGER','REGRA','REINO','RENDA','RENDE','RENAL','RESTA','RESTO',
+  'REUNE','REVER','REZAR','RICAS','RIFAR','RIGOR','RILHA','RIMAR',
+  'RINDO','RIPAR','RISCA','RISCO','RITMO','RIVAL','ROCHA','RODAS',
+  'RODAR','ROLAM','ROLAR','ROMAN','ROMBO','ROMPE','RONCA','ROQUE',
+  'ROSAS','ROSCA','ROSTO','ROUBO','ROUPA','RUBRO','RUGAS','RUINA',
+  'RUINS','RUIVA','RUIVO','RURAL','RUSSA','RUSSO','SABEM','SABER',
+  'SABES','SABIA','SABIO','SABAO','SAFRA','SAIAR','SAIAS','SAIDA',
+  'SAIDO','SAIBA','SAIRA','SALAM','SALAO','SALMO','SALSA','SALTO',
+  'SALVA','SALVE','SALVO','SAMBA','SANTA','SANTO','SARNA','SAUDE',
+  'SAUNA','SECAO','SECAS','SECOS','SECAR','SEGUE','SEGUI','SEIAM',
+  'SEJAM','SEIOS','SEIVA','SEMEA','SENAO','SENSO','SENTA','SENTE',
+  'SENTI','SERAO','SEREI','SEREM','SERES','SERIA','SERIE','SERPE',
+  'SERRA','SERVO','SERIO','SETOR','SEXOS','SEXTO','SIGLA','SIGIL',
+  'SIGNO','SILVA','SINAL','SINTA','SINTO','SIRVA','SITIO','SOBRA',
+  'SOCAR','SODIO','SOFRE','SOGRA','SOGRO','SOLAR','SOLDA',
+  'SOLTA','SOLTO','SOMAR','SOMOS','SONHA','SONHO','SORRI','SORVO',
+  'SUBIR','SUAVE','SUGAR','SULCO','SUPER','SUPRA',
+  'SURGE','SURJA','SURJO','SURRA','SUSTO','SUTIL','TAIPA','TAMBO',
+  'TAMPA','TARDE','TARJA','TAXAR','TAXAS','TECLA','TEMAS',
+  'TEMER','TEMOR','TEMOS','TENAZ','TENDA','TENDE','TENHA',
+  'TENHO','TENIS','TENTO','TERAM','TERAO','TERCO','TEREI','TEREM',
+  'TERMO','TERCA','TERRA','TERNO','TESAR','TESAO','TESTA','TESTE',
+  'TEXTO','TCHAU','TINTA','TINTO','TIRAR','TIRAS','TIROS',
+  'TOCAR','TOQUE','TOLAS','TOLHE','TOLHI','TOMAM','TOMAR','TONTO',
+  'TORCE','TORNA','TORNE','TORTO','TORRE','TORNO','TORTA','TOUCA',
+  'TOURO','TRAMA','TRAME','TRAVA','TRAVE','TRAVO','TRACO','TRAGA',
+  'TRAGO','TRARA','TREPA','TREVO','TREZE','TRIBO','TRIGO','TRINA',
+  'TRONO','TROCA','TROCO','TUMOR','TURMA','TURNO','TURBO',
+  'TUNEL','UNGIR','UNHAS','UNIAO','UNIDO','UNTAR','URINA','URSUS',
+  'URSOS','USADO','USAVA','USINA','USURA','UTEIS','UTERO','VACUO',
+  'VADIA','VAGAS','VALEM','VALER','VALES','VALEU','VALIA','VALOR',
+  'VAMOS','VAPOR','VARIA','VASCO','VASTA','VASTO','VEIAS','VEJAM',
+  'VELAR','VELAS','VELHA','VELHO','VENAL','VENDA','VENDE','VENHA',
+  'VENHO','VENTO','VERBA','VERBO','VERDE','VEREM','VERME','VERAO',
+  'VERSA','VERSO','VESPA','VESTE','VETOR','VEZES','VIAJA','VIBRA',
+  'VICIO','VIDEO','VIDAS','VIDRO','VIGAS','VIGOR','VILAO','VIMOS',
+  'VINCO','VINDA','VINDE','VINHA','VINHO','VINIL','VINTE','VIOLA',
+  'VIRAR','VIRUS','VISAM','VISAO','VISTO','VIVAM','VIVAS','VIVEM',
+  'VIVER','VIVIA','VIVOS','VIUVA','VOCES','VODCA','VOLEI','VOLTA',
+  'VOLTE','VOLTO','VOTOS','VOSSA','VOSSO','VOZES','XIQUE',
+  'ZANGA','ZARPA','ZONAL','ZUMBI','CIUME','RUBRE','DAMAS','FILOS',
+  'CUSTO','SURDO','RITOS','FITOS','TIPOS','REVES','LEMES','REFEM',
+  'FEMUR','UIVOS','SUMIR','RUGIR'
 ].filter(w => w.length === 5);
 
-// Remove duplicates
 const WORD_LIST = [...new Set(WORDS)];
 
-// ── STATE ──
 let state = {
   word: '',
   guesses: [],
@@ -925,7 +916,6 @@ let state = {
   stats: { played: 0, wins: 0, currentStreak: 0, maxStreak: 0, distribution: [0,0,0,0,0,0] }
 };
 
-// ── LOAD FROM STORAGE ──
 function loadState() {
   try {
     const saved = localStorage.getItem('ursusTermo');
@@ -936,7 +926,6 @@ function loadState() {
       state.colorBlind = s.colorBlind || false;
       state.reducedAnim = s.reducedAnim || false;
     }
-    // Daily word logic
     const today = new Date().toDateString();
     const savedGame = localStorage.getItem('ursusGame');
     if (savedGame) {
@@ -950,7 +939,6 @@ function loadState() {
         return;
       }
     }
-    // New game
     const idx = Math.floor((new Date() - new Date('2024-01-01')) / 86400000) % WORD_LIST.length;
     state.word = WORD_LIST[Math.abs(idx)] || WORD_LIST[0];
   } catch(e) {}
@@ -974,14 +962,12 @@ function saveState() {
   } catch(e) {}
 }
 
-// ── KEYBOARD LAYOUT ──
 const KB_ROWS = [
   ['Q','W','E','R','T','Y','U','I','O','P'],
   ['A','S','D','F','G','H','J','K','L'],
   ['ENTER','Z','X','C','V','B','N','M','DEL']
 ];
 
-// ── BUILD BOARD ──
 function buildBoard() {
   const board = document.getElementById('board');
   board.innerHTML = '';
@@ -999,7 +985,6 @@ function buildBoard() {
   }
 }
 
-// ── BUILD KEYBOARD ──
 function buildKeyboard() {
   KB_ROWS.forEach((row, i) => {
     const el = document.getElementById(`kb-row-${i+1}`);
@@ -1015,9 +1000,7 @@ function buildKeyboard() {
   });
 }
 
-// ── RENDER STATE ──
 function render() {
-  // Draw guesses
   state.guesses.forEach((guess, row) => {
     const result = evaluate(guess, state.word);
     for (let c = 0; c < 5; c++) {
@@ -1026,7 +1009,6 @@ function render() {
       cell.className = 'cell ' + result[c];
     }
   });
-  // Draw current guess
   const curRow = state.guesses.length;
   if (!state.gameOver && curRow < 6) {
     for (let c = 0; c < 5; c++) {
@@ -1034,16 +1016,13 @@ function render() {
       cell.textContent = state.currentGuess[c] || '';
       cell.className = 'cell' + (state.currentGuess[c] ? ' filled' : '') + ' active-row';
     }
-    // Clear remaining cells in this row
     for (let c = state.currentGuess.length; c < 5; c++) {
       const cell = document.getElementById(`cell-${curRow}-${c}`);
       cell.textContent = '';
       cell.className = 'cell active-row';
     }
   }
-  // Update keyboard colors
   updateKeyboard();
-  // Update stats bar
   updateStatsBar();
 }
 
@@ -1053,8 +1032,6 @@ function evaluate(guess, word) {
   const guessArr = guess.split('');
   const wordUsed = Array(5).fill(false);
   const guessUsed = Array(5).fill(false);
-
-  // First pass: correct
   for (let i = 0; i < 5; i++) {
     if (guessArr[i] === wordArr[i]) {
       result[i] = 'correct';
@@ -1062,7 +1039,6 @@ function evaluate(guess, word) {
       guessUsed[i] = true;
     }
   }
-  // Second pass: present
   for (let i = 0; i < 5; i++) {
     if (guessUsed[i]) continue;
     for (let j = 0; j < 5; j++) {
@@ -1083,9 +1059,7 @@ function updateKeyboard() {
     for (let i = 0; i < 5; i++) {
       const l = guess[i];
       const priority = { correct: 3, present: 2, absent: 1 };
-      if (!keyMap[l] || priority[result[i]] > priority[keyMap[l]]) {
-        keyMap[l] = result[i];
-      }
+      if (!keyMap[l] || priority[result[i]] > priority[keyMap[l]]) keyMap[l] = result[i];
     }
   });
   document.querySelectorAll('.key').forEach(btn => {
@@ -1097,17 +1071,15 @@ function updateKeyboard() {
 function updateStatsBar() {
   document.getElementById('bar-wins').textContent = state.stats.wins;
   document.getElementById('bar-streak').textContent = state.stats.currentStreak;
-  document.getElementById('bar-played').textContent = state.stats.played;
+  document.getElementById('bar-record').textContent = state.stats.maxStreak;
   const pct = state.stats.played > 0 ? Math.round(state.stats.wins / state.stats.played * 100) : 0;
   document.getElementById('bar-winpct').textContent = pct + '%';
 }
 
-// ── HANDLE INPUT ──
 function handleKey(key) {
   if (state.gameOver) return;
   const cur = state.guesses.length;
   if (cur >= 6) return;
-
   if (key === 'ENTER') {
     submitGuess();
   } else if (key === 'DEL' || key === 'BACKSPACE') {
@@ -1132,8 +1104,6 @@ function submitGuess() {
     showToast('Palavra nao encontrada!');
     return;
   }
-
-  // Hard mode check
   if (state.hardMode && state.guesses.length > 0) {
     const lastResult = evaluate(state.guesses[state.guesses.length - 1], state.word);
     const lastGuess = state.guesses[state.guesses.length - 1];
@@ -1145,18 +1115,13 @@ function submitGuess() {
       }
     }
   }
-
   const row = state.guesses.length;
   state.guesses.push(state.currentGuess);
   state.currentGuess = '';
-
   const result = evaluate(state.guesses[row], state.word);
-
-  // Animate flip
   flipRow(row, result, () => {
     state.gameOver = result.every(r => r === 'correct') || state.guesses.length >= 6;
     state.won = result.every(r => r === 'correct');
-
     if (state.won) {
       bounceRow(row);
       setTimeout(() => {
@@ -1213,13 +1178,10 @@ function shakeRow(row) {
 function bounceRow(row) {
   for (let c = 0; c < 5; c++) {
     const cell = document.getElementById(`cell-${row}-${c}`);
-    setTimeout(() => {
-      cell.classList.add('bounce');
-    }, c * 80);
+    setTimeout(() => { cell.classList.add('bounce'); }, c * 80);
   }
 }
 
-// ── TOAST ──
 function showToast(msg) {
   const container = document.getElementById('toast-container');
   const t = document.createElement('div');
@@ -1229,7 +1191,6 @@ function showToast(msg) {
   setTimeout(() => t.remove(), 3000);
 }
 
-// ── STATS ──
 function updateStats(won, tries) {
   state.stats.played++;
   if (won) {
@@ -1244,10 +1205,11 @@ function updateStats(won, tries) {
   updateStatsBar();
 }
 
-// ── RESULT MODAL ──
 function showResult() {
   document.getElementById('result-answer').textContent = state.word;
-  document.getElementById('result-title').textContent = state.won ? (state.guesses.length === 1 ? 'Perfeito!' : state.guesses.length <= 3 ? 'Incrivel!' : 'Parabens!') : 'Fim de Jogo';
+  document.getElementById('result-title').textContent = state.won
+    ? (state.guesses.length === 1 ? 'Perfeito!' : state.guesses.length <= 3 ? 'Incrivel!' : 'Parabens!')
+    : 'Fim de Jogo';
 
   const grid = document.getElementById('result-stats-grid');
   grid.innerHTML = `
@@ -1271,13 +1233,10 @@ function showResult() {
   openModal('modal-result');
 }
 
-// ── SHARE ──
 function shareResult() {
   const lines = state.guesses.map(g => {
     const r = evaluate(g, state.word);
-    return r.map(s => s === 'correct' ? 'G' : s === 'present' ? 'A' : 'C').map(c =>
-      c === 'G' ? '[V]' : c === 'A' ? '[A]' : '[X]'
-    ).join('');
+    return r.map(s => s === 'correct' ? '[V]' : s === 'present' ? '[A]' : '[X]').join('');
   });
   const text = `Termo do Ursus ${state.won ? state.guesses.length : 'X'}/6\n\n${lines.join('\n')}\n\nhttps://ursusman.com`;
   if (navigator.share) {
@@ -1287,15 +1246,9 @@ function shareResult() {
   }
 }
 
-// ── MODALS ──
-function openModal(id) {
-  document.getElementById(id).classList.add('open');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
-// ── SETTINGS ──
 function initSettings() {
   const toggleHard = document.getElementById('toggle-hard');
   const toggleColor = document.getElementById('toggle-color');
@@ -1355,14 +1308,12 @@ function applyColorBlind() {
   }
 }
 
-// ── EVENT LISTENERS ──
 document.addEventListener('keydown', e => {
   if (e.ctrlKey || e.altKey || e.metaKey) return;
   if (e.key === 'Enter') handleKey('ENTER');
   else if (e.key === 'Backspace') handleKey('BACKSPACE');
   else if (/^[a-zA-ZÀ-ÿ]$/.test(e.key)) {
-    const normalized = e.key.toUpperCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const normalized = e.key.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     handleKey(normalized);
   }
 });
@@ -1374,7 +1325,6 @@ document.getElementById('btn-share').addEventListener('click', shareResult);
 document.getElementById('btn-new-game').addEventListener('click', () => {
   closeModal('modal-result');
   if (!state.gameOver) return;
-  // Force new random word for demo
   const idx = Math.floor(Math.random() * WORD_LIST.length);
   state.word = WORD_LIST[idx];
   state.guesses = [];
@@ -1395,7 +1345,6 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
   });
 });
 
-// ── INIT ──
 loadState();
 buildBoard();
 buildKeyboard();
@@ -1403,13 +1352,11 @@ applyColorBlind();
 initSettings();
 render();
 
-// Show how-to on first visit
 if (!localStorage.getItem('ursusVisited')) {
   localStorage.setItem('ursusVisited', '1');
   setTimeout(() => openModal('modal-how'), 600);
 }
 
-// Show result if game was already over
 if (state.gameOver) {
   setTimeout(() => showResult(), 800);
 }
